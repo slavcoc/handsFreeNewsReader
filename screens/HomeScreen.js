@@ -7,7 +7,12 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Tabsich/>
+        <View>
+          <Tabsich/>
+        </View>
+        <View>
+          <Text>Home</Text>
+        </View>
       </View>
     );
   }
@@ -16,9 +21,7 @@ class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#ffff',
   }
 });
 

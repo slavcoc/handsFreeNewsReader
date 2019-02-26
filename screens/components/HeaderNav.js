@@ -1,55 +1,74 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, Image } from "react-native";
-import { Container, Header, Tab, Tabs, ScrollableTab, View } from 'native-base';
+import { TouchableOpacity, StyleSheet, Alert, ScrollView, Image } from "react-native";
+import Category from './header/Category';
 
-export default function Tabsich(props) {
-  const categories = [{
-      id: 0,
-      title: 'General',
-      img: ''
-    }, {
-      id: 1,
-      title: 'Business',
-      img: ''
-    }, {
-      id: 2,
-      title: 'Entertainment',
-      img: ''
-    }, {
-      id: 3,
-      title: 'Health',
-      img: ''
-    }, {
-      id: 4,
-      title: 'Science',
-      img: ''
-    }, {
-      id: 5,
-      title: 'Sports',
-      img: ''
-    }, {
-      id: 6,
-      title: 'Technology',
-      img: ''
-    }];
-
-    return(
-    <ScrollView horizontal={true}>
-      {categories.map(e => {
+export default class Tabsich extends React.Component {
+constructor(props) {
+  super(props);
+  this.state = {
+    categories:[
+      {
+        id: 0,
+        title: 'General',
+        img: ''
+      }, {
+        id: 1,
+        title: 'Tusiness',
+        img: ''
+      }, {
+        id: 2,
+        title: 'Entertainment',
+        img: ''
+      }, {
+        id: 3,
+        title: 'Health',
+        img: ''
+      }, {
+        id: 4,
+        title: 'Science',
+        img: ''
+      }, {
+        id: 5,
+        title: 'Sports',
+        img: ''
+      }, {
+        id: 6,
+        title: 'Technology',
+        img: ''
+      }]
+  };
+  this._onPressButton = this._onPressButton.bind(this);
+}
+ _onPressButton(e) {
+    Alert.alert(`Category is - ${e}`)
+  }
+render() {
+  return(
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      {this.state.categories.map(e => {
         return (
-          <ScrollView key={e.id} scrollEventThrottle={16}>
-            <View style={{height:100, width:110, flex: 1, padding:10}}>
-              <Image style={{flex: 1, borderRadius:10, width: null, height: null, resizeMode:'cover'}} source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}} />
-              <Text>{e.title}</Text>
-            </View>
-          </ScrollView>
-        );
+        <TouchableOpacity key={e.id} onPress={()=> this._onPressButton(e.title)}>
+            <Category title={e.title} />
+        </TouchableOpacity>
+        )
       })}
     </ScrollView>
     );
-    
+} 
 }
 
-const styles = {
-  backgroundColor: 'black'
-};
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 60,
+    alignItems: 'center'
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
+  }
+});
