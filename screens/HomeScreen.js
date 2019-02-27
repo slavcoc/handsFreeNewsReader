@@ -12,7 +12,7 @@ class LoginScreen extends React.Component {
           <Tabsich/>
         </View>
         <View>
-          <StoryCard />
+          <StoryCard/>
         </View>
       </View>
     );
