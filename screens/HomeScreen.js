@@ -1,6 +1,7 @@
 import React, { Components } from "react";
 import { View, Button, Text, StyleSheet, Image } from "react-native";
-import Tabsich from "./components/HeaderNav"
+import Tabsich from "./components/HeaderNav";
+import StoryCard from "./components/body/Card-auto";
 
 
 class LoginScreen extends React.Component {
@@ -11,7 +12,7 @@ class LoginScreen extends React.Component {
           <Tabsich/>
         </View>
         <View>
-          <Text>Home</Text>
+          <StoryCard />
         </View>
       </View>
     );
