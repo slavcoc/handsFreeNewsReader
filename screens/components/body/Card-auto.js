@@ -1,5 +1,5 @@
 import React, { Components } from "react";
-import { View, Button, Text, Image, FlatList, StyleSheet } from "react-native";
+import { View, Dimensions, Text, ImageBackground, FlatList, StyleSheet } from "react-native";
 
 class StoryCard extends React.Component {
   constructor() {
@@ -12,9 +12,11 @@ class StoryCard extends React.Component {
   _keyExtractor = (item, index) => item.id;
 
   renderItem = ({item}) => 
-  <View style={{widht:'100%', height:200}}>
-    <Image style={{height: '100%'}} source={{uri: item.urlToImage}} />
-    <Text key={item.id}>{item.author}</Text>
+  <View style={{width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height}}>
+    <ImageBackground source={{uri: item.urlToImage}} style={{width: '100%', height: '100%'}}>
+      <Text>{item.title}</Text>
+    </ImageBackground>
   </View>;
 
   componentDidMount() {
@@ -32,9 +34,10 @@ class StoryCard extends React.Component {
   
   render() {
     return (
-      <View style={{flex:1, position: 'absolute',
-      top: 50,}}>
+      <View>
         <FlatList
+          pagingEnabled={true}
+          horizontal={true}
           keyExtractor={(item, index) => index.toString()}
           data={this.state.dataSource}
           renderItem={this.renderItem}
