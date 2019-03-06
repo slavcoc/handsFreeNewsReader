@@ -8,12 +8,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
           <Tabsich/>
-        </View>
-        <View>
-          <StoryCard/>
-        </View>
       </View>
     );
   }

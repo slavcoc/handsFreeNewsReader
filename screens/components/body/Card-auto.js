@@ -1,8 +1,6 @@
 import React, { Components } from "react";
-import { View, Dimensions, Text, ImageBackground, FlatList, StyleSheet } from "react-native";
-
-const device_width = Dimensions.get('window').width;
-const device_height = Dimensions.get('window').height;
+import { View, Dimensions, FlatList, StyleSheet } from "react-native";
+import CardContent from "./CardContent";
 
 class StoryCard extends React.Component {
   constructor() {
@@ -21,18 +19,13 @@ class StoryCard extends React.Component {
     this.setState({
       index: curIndex + 1
     })
-    setTimeout(() => {
-      this.flatListRef.scrollToIndex({animated: true, index: this.state.index});
-    }, 3000)
+    // setTimeout(() => {
+    //   this.flatListRef.scrollToIndex({animated: true, index: this.state.index});
+    // }, 3000)
   }
 
   renderItem = ({item}) => 
-  <View style={{width: device_width,
-  height: '100%'}}>
-    <ImageBackground source={{uri: item.urlToImage}} style={{width: '100%', height: '100%'}}>
-      <Text>{item.title}</Text>
-    </ImageBackground>
-  </View>;
+    <CardContent medium={item.source.name} title={item.title} date={item.publishedAt} url={item.urlToImage} description={item.description}/>;
 
   componentDidMount() {
     const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=ad719598305c4ce580bf8cb1bee981ed"
@@ -45,9 +38,9 @@ class StoryCard extends React.Component {
       console.log(this.state.dataSource)
     })
 
-    setInterval(() => (
-      this.moveToPage()
-    ), 6000);
+    // setInterval(() => (
+    //   this.moveToPage()
+    // ), 6000);
   };
 
 
@@ -63,7 +56,6 @@ class StoryCard extends React.Component {
       <View>
         <FlatList
           ref={(ref) => { this.flatListRef = ref; }}
-          centerContent={true}
           pagingEnabled={true}
           horizontal={true}
           keyExtractor={(item, index) => index.toString()}
@@ -80,7 +72,35 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'black',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+  },
+  title: {
+    color: 'white',
+    padding: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
+  },
+  description: {
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 15,
+    padding: 15,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
   }
 });
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Alert, ScrollView, Image } from "react-native";
-import Category from './header/Category';
+import { TouchableOpacity, Text, StyleSheet, Alert, ScrollView, Image } from "react-native";
+import { Container, Header, Tab, Tabs, ScrollableTab, View } from 'native-base';
+import StoryCard from "./body/Card-auto";
 
 export default class Tabsich extends React.Component {
 constructor(props) {
@@ -13,7 +14,7 @@ constructor(props) {
         img: ''
       }, {
         id: 1,
-        title: 'Tusiness',
+        title: 'Business',
         img: ''
       }, {
         id: 2,
@@ -44,27 +45,27 @@ constructor(props) {
   }
 render() {
   return(
-    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-      {this.state.categories.map(e => {
-        return (
-        <TouchableOpacity key={e.id} onPress={()=> this._onPressButton(e.title)}>
-            <Category title={e.title} />
-        </TouchableOpacity>
-        )
-      })}
-    </ScrollView>
+    <Container>
+        <Tabs locked={true} renderTabBar={()=> <ScrollableTab />}>
+        {this.state.categories.map(e =>  
+          <Tab key={e.id} heading={e.title}>
+            <StoryCard />
+          </Tab>
+        )}
+        </Tabs>
+      </Container>
     );
-} 
+  } 
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: 10,
     alignItems: 'center'
   },
   button: {
-    marginBottom: 30,
-    width: 260,
+    marginBottom: 10,
+    width: 100,
     alignItems: 'center',
   },
   buttonText: {
