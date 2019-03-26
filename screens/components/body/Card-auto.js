@@ -1,10 +1,11 @@
 import React, { Components } from "react";
 import { View, Dimensions, FlatList, StyleSheet } from "react-native";
+import https from '../../../axios';
 import CardContent from "./CardContent";
 
 class StoryCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       dataSource: [],
       index: 0
@@ -28,27 +29,19 @@ class StoryCard extends React.Component {
     <CardContent medium={item.source.name} title={item.title} date={item.publishedAt} url={item.urlToImage} description={item.description}/>;
 
   componentDidMount() {
-    const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=ad719598305c4ce580bf8cb1bee981ed"
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-        dataSource: response.articles
-      })
-      console.log(this.state.dataSource)
-    })
-
+   this.setState({
+     dataSource: this.props.dataSource
+   })
     // setInterval(() => (
     //   this.moveToPage()
     // ), 6000);
   };
 
-
   // Need to add function for tracking pages and update on swipe left or right
   // Need to implement on hold to stop the timer
   // rethink the UI
   test(e) {
-    console.log('viewch', e)
+    // console.log('viewch', e)
   }
   
   render() {
@@ -59,7 +52,7 @@ class StoryCard extends React.Component {
           pagingEnabled={true}
           horizontal={true}
           keyExtractor={(item, index) => index.toString()}
-          data={this.state.dataSource}
+          data={this.props.data}
           renderItem={this.renderItem}
           onViewableItemsChanged={this.test}
         />

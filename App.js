@@ -1,8 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
-import Navigation from "./screens/components/BottomNav"
-
-
+import Navigation from "./screens/components/navigation/MainNav"
 
 export default class App extends React.Component {
   render() {

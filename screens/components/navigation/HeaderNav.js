@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, Text, StyleSheet, Alert, ScrollView, Image } from "react-native";
-import { Container, Header, Tab, Tabs, ScrollableTab, View } from 'native-base';
-import StoryCard from "./body/Card-auto";
+import React from 'react';
+import {  StyleSheet, Alert} from "react-native";
+import { Container, Tab, Tabs, ScrollableTab } from 'native-base';
+import https from '../../../axios';
+import StoryCard from "../body/Card-auto";
 
 export default class Tabsich extends React.Component {
 constructor(props) {
@@ -36,20 +37,44 @@ constructor(props) {
         id: 6,
         title: 'Technology',
         img: ''
-      }]
+      }],
+      dataSource: [],
+      index: 0
   };
   this._onPressButton = this._onPressButton.bind(this);
 }
  _onPressButton(e) {
     Alert.alert(`Category is - ${e}`)
   }
+
+  componentDidMount() {
+    https.data.getData()
+      .then(res => {
+        this.setState({
+        dataSource: res.data.articles
+      })
+    })
+    // https.sources.getSources()
+    //   .then(res => console.log(res))
+  };
+
+  changeCategory(categoryID) {
+   const category = this.state.categories.find(el => el.id === categoryID);
+   https.data.getDataByCategory(category.title.toLowerCase())
+    .then(res => {
+      this.setState({
+        dataSource: res.data.articles
+      })
+    })
+  }
+
 render() {
   return(
     <Container>
-        <Tabs locked={true} renderTabBar={()=> <ScrollableTab />}>
+        <Tabs locked={true} onChangeTab={({i}) => this.changeCategory(i)} renderTabBar={()=> <ScrollableTab />}>
         {this.state.categories.map(e =>  
           <Tab key={e.id} heading={e.title}>
-            <StoryCard />
+            <StoryCard data={this.state.dataSource}/>
           </Tab>
         )}
         </Tabs>
