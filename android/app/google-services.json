@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "965113324340",
+    "firebase_url": "https://handsfreenewsapp.firebaseio.com",
+    "project_id": "handsfreenewsapp",
+    "storage_bucket": "handsfreenewsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965113324340:android:9d465f308617aed3",
+        "android_client_info": {
+          "package_name": "com.autopilotnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965113324340-59d3ad2gajuj59kar93h5ofouc8bbmlo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAivowqCMiaHPLkLFW1Br4nuXAkQ46TREU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
