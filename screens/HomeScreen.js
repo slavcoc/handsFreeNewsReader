@@ -1,6 +1,6 @@
 import React, { Components } from "react";
 import { View, Button, Text, StyleSheet, Image } from "react-native";
-import Tabsich from "./components/HeaderNav";
+import Tabsich from "./components/navigation/HeaderNav";
 import StoryCard from "./components/body/Card-auto";
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, StyleSheet, Alert, ScrollView, Image } from "react-native";
 import { Container, Header, Tab, Tabs, ScrollableTab, View } from 'native-base';
-import StoryCard from "./body/Card-auto";
+import StoryCard from "../body/Card-auto";
 
 export default class Tabsich extends React.Component {
 constructor(props) {

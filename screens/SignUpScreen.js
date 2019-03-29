@@ -1,7 +1,7 @@
 import React, { Components } from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
 
-class LoginScreen extends React.Component {
+class SignUpScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginScreen;
+export default SignUpScreen;

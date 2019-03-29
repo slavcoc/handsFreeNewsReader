@@ -1,9 +1,8 @@
-import React from "react";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation";
 import { Icon } from 'react-native-elements';
+import DetailsScreen from "../../DetailsScreen";
+import HomeScreen from "../../HomeScreen";
 
-import DetailsScreen from "../DetailsScreen";
-import HomeScreen from "../HomeScreen";
 
 const BottomNavigation = createBottomTabNavigator({
     Home: {
@@ -26,6 +25,5 @@ const BottomNavigation = createBottomTabNavigator({
     },
 });
 
-const Navigation = createAppContainer(BottomNavigation);
 
-export default Navigation;
+export default BottomNavigation;
