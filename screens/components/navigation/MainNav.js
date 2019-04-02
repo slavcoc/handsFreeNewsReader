@@ -1,10 +1,8 @@
 import {createAppContainer, createStackNavigator } from "react-navigation";
-import AuthenticationNavigator from "./AuthenticationNav";
-import BottomNavigation from "./BottomNav";
+import BottomNav from './BottomNav';
 
 const MainNavigator = createStackNavigator({
-    Auth: AuthenticationNavigator,
-    UsersHome: BottomNavigation,
+    AuthHome: BottomNav,
   },
   {
     headerMode: 'none',

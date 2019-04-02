@@ -1,12 +1,13 @@
+import React from "react";
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from "react-navigation";
 import { Icon } from 'react-native-elements';
 import DetailsScreen from "../../DetailsScreen";
-import HomeScreen from "../../HomeScreen";
+import MainScreen from "../../MainScreen";
 
 
 const BottomNavigation = createBottomTabNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: MainScreen,
         navigationOptions: () => ({
             title: 'Home',
             tabBarIcon: ({tintColor}) => (
