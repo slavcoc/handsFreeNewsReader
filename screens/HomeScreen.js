@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import Tabsich from "./components/navigation/HeaderNav";
 
 
-class LoginScreen extends React.Component {
+class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginScreen;
+export default HomeScreen;
