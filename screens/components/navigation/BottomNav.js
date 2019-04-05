@@ -2,29 +2,51 @@ import React from "react";
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from "react-navigation";
 import { Icon } from 'react-native-elements';
 import DetailsScreen from "../../DetailsScreen";
-import MainScreen from "../../MainScreen";
+import HomeScreen from "../../HomeScreen";
 
 
 const BottomNavigation = createBottomTabNavigator({
     Home: {
-        screen: MainScreen,
+        screen: HomeScreen,
         navigationOptions: () => ({
-            title: 'Home',
             tabBarIcon: ({tintColor}) => (
-                <Icon name="list" color={tintColor} size={32} />
+                <Icon name="home" color={tintColor} size={32} />
             )
         })
     },
     Details: {
         screen: DetailsScreen,
         navigationOptions: () => ({
-            title: 'Details',
             tabBarIcon: ({tintColor}) => (
-                <Icon name="list" color={tintColor} size={32} />
+                <Icon name="dashboard" color={tintColor} size={32} />
             )
         })
     },
-});
+    Search: {
+        screen: DetailsScreen,
+        navigationOptions: () => ({
+            tabBarIcon: ({tintColor}) => (
+                <Icon name="search" color={tintColor} size={32} />
+            )
+        })
+    },
+    Profile: {
+        screen: DetailsScreen,
+        navigationOptions: () => ({
+            tabBarIcon: ({tintColor}) => (
+                <Icon name="face" color={tintColor} size={32} />
+            )
+        })
+    },
+},
+{
+    tabBarOptions: {
+        showLabel: false
+    }
+}
+);
 
 
-export default BottomNavigation;
+const InAppNav = createAppContainer(BottomNavigation);
+
+export default InAppNav;

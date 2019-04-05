@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'react-native-firebase';
 import LoginScreen from './LoginScreen';
-import HomeScreen from './HomeScreen';
+import InAppNav from './components/navigation/BottomNav';
 
 export default class MainScreen extends React.Component {
   constructor() {
@@ -10,6 +10,7 @@ export default class MainScreen extends React.Component {
     this.state = {
       loading: true,
       user: null,
+      isAuthenticated: false,
     };
   }
   /**
@@ -20,9 +21,11 @@ export default class MainScreen extends React.Component {
    */
   componentDidMount() {
     this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
+      window.console.log('user', this.state.user);
       this.setState({
         loading: false,
         user,
+        isAuthenticated: true
       });
     });
   }
@@ -37,7 +40,7 @@ export default class MainScreen extends React.Component {
     // The application is initialising
     // if (this.state.loading) return <LoadingIndicator />;
     // The user exists, so they're logged in
-    if (this.state.user) return <HomeScreen />;
+    if (this.state.user || this.isAuthenticated) return <InAppNav />;
     // The user is null, so they're logged out
     return <LoginScreen />;
   }

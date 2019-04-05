@@ -1,8 +1,8 @@
 import {createAppContainer, createStackNavigator } from "react-navigation";
-import BottomNav from './BottomNav';
+import MainScreen from "../../MainScreen";
 
 const MainNavigator = createStackNavigator({
-    AuthHome: BottomNav,
+    AuthHome: MainScreen,
   },
   {
     headerMode: 'none',
