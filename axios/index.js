@@ -6,7 +6,8 @@ const Token = 'ad719598305c4ce580bf8cb1bee981ed';
 
 
 const apiClient = axios.create({
-  baseURL: URL
+  baseURL: URL,
+  headers: { Authorization: 'Bearer ' + Token }
 })
 
 apiClient.interceptors.response.use(response =>
@@ -20,15 +21,15 @@ apiClient.interceptors.response.use(response =>
 export default {
   sources: {
     getSources() {
-      return apiClient.get('/sources', { headers: { Authorization: 'Bearer ' + Token } })
+      return apiClient.get('/sources')
     }
   },
   data: {
     getData () {
-      return apiClient.get(`/top-headlines?country=us`, { headers: { Authorization: 'Bearer ' + Token } })
+      return apiClient.get(`/top-headlines?country=us`)
     },
     getDataByCategory(category) {
-      return apiClient.get(`/top-headlines?country=us&category=${category}`, { headers: { Authorization: 'Bearer ' + Token } })
+      return apiClient.get(`/top-headlines?country=us&category=${category}`)
     }
   }
 }

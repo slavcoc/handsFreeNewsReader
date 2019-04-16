@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Dimensions } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import { Container, Content, Card, CardItem, Text, Button, Icon, Left, Body } from 'native-base';
 
 const device_width = Dimensions.get('window').width;
 
@@ -9,7 +9,7 @@ export default class CardContent extends Component {
     return (
       <Container style={{padding: 10, width: device_width}}>
         <Content>
-          <Card style={{flex: 0}}>
+          <Card style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
             <CardItem>
               <Left>
                 <Body>

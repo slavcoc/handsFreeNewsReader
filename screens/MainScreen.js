@@ -21,7 +21,7 @@ export default class MainScreen extends React.Component {
    */
   componentDidMount() {
     this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-      window.console.log('user', this.state.user);
+      window.console.log('user', user);
       this.setState({
         loading: false,
         user,
